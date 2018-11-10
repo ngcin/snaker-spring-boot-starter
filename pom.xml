@@ -7,6 +7,16 @@
     <artifactId>snaker-spring-boot-starter</artifactId>
     <version>1.0.0</version>
 
+    <name>snake flow springboot starter</name>
+    <description>
+        Provides snake flow springboot starter.
+    </description>
+    <url>https://github.com/ngcin/snaker-spring-boot-starter</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,6 +83,45 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -84,17 +133,27 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/Shuyun123/seaweedfs-java-client</url>
-        <connection>git@github.com:Shuyun123/seaweedfs-java-client.git</connection>
-        <developerConnection>http://www.anumbrella.net</developerConnection>
+        <url>https://github.com/ngcin/snaker-spring-boot-starter.git</url>
+        <connection>git@github.com:ngcin/snaker-spring-boot-starter.git</connection>
+        <developerConnection>http://www.xuyongquan.com</developerConnection>
     </scm>
 
     <developers>
         <developer>
-            <name>anumbrella</name>
-            <email>11xxxxx4@qq.com</email>
-            <url>http://www.anumbrella.net</url>
+            <name>xuyongquan</name>
+            <email>ngcin@mail.com</email>
+            <url>http://www.xuyongquan.com</url>
         </developer>
     </developers>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
